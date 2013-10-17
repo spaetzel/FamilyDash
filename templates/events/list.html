@@ -1,0 +1,15 @@
+<% _.each(topItems, function(curItem){ %>
+	<div class="currentEvent"
+ 			<h2><%= curItem.title %></a>
+ 		<p><%= curItem.displayDate %></p>
+ 		</div>
+ 	<% }); %>
+
+ <ul>
+<% _.each(restItems, function(curItem){ %>
+<li>
+ 		<h2><%= curItem.title %></a>
+ 		<p><%= curItem.displayDate %></p>
+</li>
+<% }); %>
+</ul>
