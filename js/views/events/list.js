@@ -7,11 +7,50 @@ define(['jquery', 'underscore', 'backbone', 'text!templates/events/list.html'
       this.template = _.template(listTemplate);
     },
     render: function() {
-      var eventsUrl = "http://pipes.yahoo.com/pipes/pipe.run?_id=c4d622b74864444d50c1d73e56bfbb13&_render=json&_callback=?";
+      var urls = [ "http://p01-calendarws.icloud.com/ca/subscribe/1/PtSggz87k5UY1Yzlg1u56opPikvOTXJNQoz_7EXDvqfR1tlzK8jcMfrCCGEhRhNQ",
+      "http://p01-calendarws.icloud.com/ca/subscribe/1/W5A1qfQwaf-IN68VkEcJoECoht9hbtM9DxpFg8snr5sUqKvBGXX1z7HlYcEbFryLzfBKP0cg88YbHmLE7-s_bH40StWi9Mpd-P3dsZgzSlI"
+      ];
 
-      console.log(eventsUrl);
+      var eventsUrl = "http://pipes.yahoo.com/pipes/pipe.run?_id=7d1612a234562c3c4b52ffc1bc682fb0&_render=json&iCalURL=";
 
       var self = this;
+
+      var events = [];
+
+      var renderEvents = _.after( urls.length, function(){
+          console.log(events[0]);
+
+        console.log(events.length);
+
+          var sorted = _.sortBy( events, function(curEvent){
+            return curEvent.dtstart;
+          });
+
+          $(self.el).html(self.template({
+            topItems: _.first(sorted, 1),
+            restItems: _.rest(sorted, 1)
+          }));
+      });
+
+      
+      _.each( urls, function(curUrl){
+        var fullUrl = eventsUrl + encodeURIComponent(curUrl) + "&_callback=?";
+
+            console.log(fullUrl);
+
+        $.getJSON(fullUrl, function(data){
+
+            _.each( data.value.items, function(curItem){
+              events.push( curItem );
+            });
+
+            console.log(events.length);
+
+            renderEvents();
+        });
+      });
+
+  /*
 
       $.getJSON(eventsUrl, function(data) {
         var events = data.value.items;
@@ -27,7 +66,7 @@ define(['jquery', 'underscore', 'backbone', 'text!templates/events/list.html'
 
       });
 
-
+*/
 
       return this;
     }
