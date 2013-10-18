@@ -20,9 +20,7 @@ define(['jquery', 'underscore', 'backbone'], function($, _, Backbone) {
 		var hours=Digital.getHours()
 		var minutes=Digital.getMinutes()
 		var seconds=Digital.getSeconds()
-		var dn="PM"
-		if (hours<12)
-		dn="AM"
+
 		if (hours>12)
 		hours=hours-12
 		if (hours==0)
@@ -31,7 +29,7 @@ define(['jquery', 'underscore', 'backbone'], function($, _, Backbone) {
 		minutes="0"+minutes
 		if (seconds<=9)
 		seconds="0"+seconds
-		var ctime=hours+":"+minutes+":"+seconds+" "+dn
+		var ctime=hours+":"+minutes+":"+seconds+" "
 		$(thelement).html(ctime);
 		var self = this;
 		setTimeout(function(){ self.displayClock() },1000)
