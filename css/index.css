@@ -34,3 +34,8 @@ div{
 #events #current li{
 	border: solid black 5px;
 }
+
+#events h2{
+	height: 30px;
+	overflow: hidden;
+}
