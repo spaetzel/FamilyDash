@@ -9,7 +9,7 @@ body, h1, h2, h3{
 
 #mainContainer
 {
-	margin: 0;
+	margin: 10px;
 
 }
 
@@ -42,6 +42,10 @@ div{
 	height: 55px;
 	overflow: hidden;
 	margin-bottom: 5px;
+}
+
+#events li p{
+	font-size: 15px;
 }
 
 #events #current li{
