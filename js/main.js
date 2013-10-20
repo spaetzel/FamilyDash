@@ -6,7 +6,8 @@ require.config({
     backbone: 'libs/backbone/backbone-optamd3-min',
     text: 'libs/require/text',
     templates: '../templates',
-    bootstrap: 'libs/bootstrap/bootstrap.min'
+    bootstrap: 'libs/bootstrap/bootstrap.min',
+    sitetotal: 'libs/chartbeat/sitetotal'
   },
     urlArgs: "bust=" + (new Date()).getTime()
 });

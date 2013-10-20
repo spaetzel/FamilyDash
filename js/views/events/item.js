@@ -9,7 +9,6 @@ define(['jquery', 'underscore', 'backbone', 'text!templates/events/item.html'
     render: function() {
       var self = this;
  
- console.log('item', self.model);
 
         $(self.el).html(self.template({
   			item: self.model

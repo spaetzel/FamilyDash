@@ -1,3 +1,7 @@
+body{
+	background: black;
+}
+
 body, h1, h2, h3{
 	color: white; 
 	font-family: 'Domine', serif;
@@ -6,9 +10,7 @@ body, h1, h2, h3{
 #mainContainer
 {
 	margin: 0;
-	width: 1124px;
-	height: 768px;
-	background: black;
+
 }
 
 div{
@@ -25,14 +27,36 @@ div{
 	padding: 50px 0;
 }
 
+#events{
+	height: 580px;
+	overflow: hidden;
+	margin-bottom: 5px;
+}
 #events ul{
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
 
+#events li{
+	height: 55px;
+	overflow: hidden;
+	margin-bottom: 5px;
+}
+
 #events #current li{
-	border: solid black 5px;
+	height: 120px;
+	padding: 3px;
+}
+
+#events #current h2{
+	font-size: 40px;
+	height: 90px;
+}
+
+#events #current p{
+	font-size: 16px;
+	height: 20px;
 }
 
 #events h2{

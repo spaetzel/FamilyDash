@@ -37,7 +37,6 @@ define(['jquery', 'underscore', 'backbone', 'config', 'views/events/item', 'text
           });
 
           _.each(sorted, function(curItem){
-            console.log(curItem);
             var view = new itemView({
               model: curItem
             });

@@ -1,5 +1,5 @@
-define(['jquery', 'order!underscore', 'backbone', 'views/events/list',  'views/clock/clock', 'views/weather/weather', 'views/photos/photos', 'text!templates/main/home.html'], 
-  function($, _, Backbone, eventsList, clockView, weatherView, photosView, mainTemplate) {
+define(['jquery', 'order!underscore', 'backbone', 'views/events/list', 'views/chartbeat/chartbeat', 'views/clock/clock', 'views/weather/weather', 'views/photos/photos', 'text!templates/main/home.html'], 
+  function($, _, Backbone, eventsList, chartbeatView, clockView, weatherView, photosView, mainTemplate) {
 
   var mainHomeView = Backbone.View.extend({
 
@@ -35,8 +35,10 @@ define(['jquery', 'order!underscore', 'backbone', 'views/events/list',  'views/c
       });
       photos.render();
 
-      $('.nav li').removeClass('active');
-      $('#home').addClass('active');
+      var chartbeat = new chartbeatView({
+        el: $('#chartbeat')
+      });
+      chartbeat.render();
 
     }
 
