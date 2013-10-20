@@ -25,7 +25,7 @@ define(['jquery', 'underscore', 'backbone', 'text!templates/weather/weather.html
 
       var self = this;
 
-      setTimeout( function(){ self.refreshFrame(); }, 300000 );
+      setTimeout( function(){ self.refreshFrame(); }, 150000 );
 
     }
 

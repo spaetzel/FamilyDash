@@ -20,7 +20,10 @@ define(['jquery', 'underscore', 'backbone', 'config', 'views/events/item', 'text
 
       this.fetchEvents(urls, currentUrl, $('#current', this.el));
       
-     
+       var self = this;
+
+      setTimeout( function(){ self.render(); }, 120000 );
+
       return this;
     },
     fetchEvents: function(urls, pipe, element){
