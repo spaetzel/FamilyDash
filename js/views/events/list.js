@@ -1,6 +1,6 @@
-define(['jquery', 'underscore', 'backbone', 'config', 'views/events/item', 'text!templates/events/list.html'
+define(['jquery', 'underscore', 'backbone', 'moment', 'config', 'views/events/day', 'text!templates/events/list.html'
 
-], function($, _, Backbone, config, itemView, listTemplate) {
+], function($, _, Backbone, moment, config, dayView, listTemplate) {
 
   var eventListView = Backbone.View.extend({
     initialize: function() {
@@ -13,18 +13,38 @@ define(['jquery', 'underscore', 'backbone', 'config', 'views/events/item', 'text
 
       var eventsUrl = "http://pipes.yahoo.com/pipes/pipe.run?_id=7d1612a234562c3c4b52ffc1bc682fb0&_render=json&iCalURL=";
 
-      var currentUrl = "http://pipes.yahoo.com/pipes/pipe.run?_id=2483704c2eece2e34e88db1fbfe6aa1a&_render=json&iCalURL=";
-
       this.fetchEvents(urls, eventsUrl, $('#list', this.el));
 
 
-      this.fetchEvents(urls, currentUrl, $('#current', this.el));
-      
-       var self = this;
+      var self = this;
 
       setTimeout( function(){ self.render(); }, 120000 );
 
       return this;
+    },
+    getDates: function(element, events){
+
+      var date = moment({hour: 0});
+
+
+      for( var i = 0; i < 24; i++ ){
+       
+
+         var view = new dayView({
+              model: {
+                date: date,
+                items: events
+              }
+            });
+            $(element).append(
+              view.render().el
+            );
+
+          date.add('days', 1);
+
+
+      }
+
     },
     fetchEvents: function(urls, pipe, element){
 
@@ -39,6 +59,9 @@ define(['jquery', 'underscore', 'backbone', 'config', 'views/events/item', 'text
             return curEvent.item.dtstart;
           });
 
+          self.getDates(element, sorted);
+
+/*
           _.each(sorted, function(curItem){
             var view = new itemView({
               model: curItem
@@ -48,7 +71,7 @@ define(['jquery', 'underscore', 'backbone', 'config', 'views/events/item', 'text
             );
 
           });
-
+*/
  
       });
 

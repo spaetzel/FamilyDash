@@ -40,6 +40,7 @@ define(['jquery', 'order!underscore', 'backbone', 'views/events/list', 'views/ch
       });
       chartbeat.render();
 
+
     }
 
   });

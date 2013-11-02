@@ -32,6 +32,11 @@ div{
 	overflow: hidden;
 	margin-bottom: 5px;
 }
+
+#events h1{
+	padding-left: 10px;
+}
+
 #events ul{
 	list-style: none;
 	margin: 0;
@@ -39,31 +44,19 @@ div{
 }
 
 #events li{
+	color: black;
 	height: 55px;
 	overflow: hidden;
 	margin-bottom: 5px;
+	padding-left: 10px;
 }
 
 #events li p{
 	font-size: 15px;
 }
 
-#events #current li{
-	height: 120px;
-	padding: 3px;
-}
-
-#events #current h2{
-	font-size: 40px;
-	height: 90px;
-}
-
-#events #current p{
-	font-size: 16px;
-	height: 20px;
-}
-
 #events h2{
+	color: black;
 	height: 30px;
 	overflow: hidden;
 }

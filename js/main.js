@@ -7,9 +7,10 @@ require.config({
     text: 'libs/require/text',
     templates: '../templates',
     bootstrap: 'libs/bootstrap/bootstrap.min',
-    sitetotal: 'libs/chartbeat/sitetotal'
-  },
-    urlArgs: "bust=" + (new Date()).getTime()
+    sitetotal: 'libs/chartbeat/sitetotal',
+    moment: 'libs/moment/moment'
+  }
+  //, urlArgs: "bust=" + (new Date()).getTime()
 });
 
 require([
@@ -17,4 +18,6 @@ require([
   'app'
 ], function(App, $){
   App.initialize();
+
+
 });
