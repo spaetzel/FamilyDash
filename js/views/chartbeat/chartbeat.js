@@ -1,8 +1,6 @@
-define(['jquery', 'underscore', 'backbone', 'config', 'text!templates/chartbeat/chartbeat.html', 'sitetotal'
+define(['jquery', 'underscore', 'backbone', 'config', 'text!templates/chartbeat/chartbeat.html', 'sitetotal'], function($, _, Backbone, config, chartbeatTemplate) {
 
-], function($, _, Backbone, config, chartbeatTemplate) {
-
-  var eventListView = Backbone.View.extend({
+  var chartbeatView = Backbone.View.extend({
     initialize: function() {
       this.template = _.template(chartbeatTemplate);
     },
@@ -28,6 +26,6 @@ define(['jquery', 'underscore', 'backbone', 'config', 'text!templates/chartbeat/
 
   });
 
-  return eventListView;
+  return chartbeatView;
 
 });
