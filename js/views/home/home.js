@@ -33,11 +33,13 @@ define(['jquery', 'order!underscore', 'backbone', 'views/events/list', 'views/ch
       });
       weather.render();
 
+/*
 
       var photos = new photosView({
         el: $('#photos')
       });
       photos.render();
+*/
 
       var chartbeat = new chartbeatView({
         el: $('#chartbeat')

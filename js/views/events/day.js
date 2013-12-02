@@ -76,6 +76,7 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'common', 'views/events/it
       return output;
     },
     displayWeather: function(result){
+
       var self = this;
         $('.temps', self.el).html(self.weatherTemplate({
           common: common,

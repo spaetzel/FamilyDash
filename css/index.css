@@ -62,3 +62,14 @@ body, h1, h2, h3{
 #chill{
 	font-size: 40px;
 }
+
+.temps{
+	font-size: 20px;
+	height: 20px;
+	float: right;
+}
+
+#chartbeat{
+	margin-top: 50px;
+	margin-left: 130px;
+}
