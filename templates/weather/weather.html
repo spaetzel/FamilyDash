@@ -1,1 +1,34 @@
-<iframe id="forecast_embed" type="text/html" frameborder="0" height="245" width="100%"> </iframe>
+<%
+	var current = Math.round(currently.temperature );
+	var windChill = Math.round(currently.apparentTemperature );
+
+	var showChill = false;
+
+	if( Math.abs( current - windChill )> 2 ){
+		showChill = true;
+	}
+
+%>
+
+<div class="row">
+	<div class="span6">
+		<div class="row">
+			<div class="span2" id="temp">
+				<%= current  %> 
+				<i class="wi-celcius"></i>
+			</div>
+			<% if( showChill ){ %>
+			<div class="span2" id="windChill">
+				Feels Like
+				<div id="chill">
+				<%= windChill %>
+				<i class="wi-celcius"></i>
+				</div>
+			</div> 
+			<% } %>
+		</div>
+		<div id="currentForecast">
+			<%= currently.summary %>
+		</div>
+	</div>
+</div>

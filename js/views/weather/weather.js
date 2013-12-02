@@ -9,21 +9,29 @@ define(['jquery', 'underscore', 'backbone', 'text!templates/weather/weather.html
     },
     render: function() {
       var self = this;
- 
-        $(self.el).html(self.template({
-  
-        }));
-
 
       this.refreshFrame();
 
       return this;
     },
     refreshFrame: function(){
-      var element = $('iframe', this.el)[0];
-      element.src = this.src;
-
       var self = this;
+
+      var url = "https://api.forecast.io/forecast/2d6c80b1da58dfb81fcf5ae22b9a441c/43.431598,-80.519807?units=si&callback=?";
+
+      $.ajax({
+        url: url,
+        method: 'GET',
+        dataType: 'jsonp'
+      }).always(function(result){
+        console.log(result);
+
+
+        $(self.el).html(self.template(
+            result
+        ));
+
+      });
 
       setTimeout( function(){ self.refreshFrame(); }, 150000 );
 

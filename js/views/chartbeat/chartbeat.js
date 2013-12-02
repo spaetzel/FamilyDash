@@ -11,8 +11,6 @@ define(['jquery', 'underscore', 'backbone', 'config', 'text!templates/chartbeat/
   
         }));
 
-        console.log(config);
-
         var chartbeatConfig = {
             'api': 'https://chartbeat.com/api/quickstats/?apikey=' + config.chartbeat.apiKey + '&host=' + config.chartbeat.host,
             'element': 'chartbeatGauge',

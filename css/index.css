@@ -1,5 +1,6 @@
 body{
 	background: black;
+	line-height: inherit;
 }
 
 body, h1, h2, h3{
@@ -11,14 +12,6 @@ body, h1, h2, h3{
 {
 	margin: 10px;
 
-}
-
-div{
-	overflow: hidden;
-}
-
-#weather{
-	background: white;
 }
 
 #clock{
@@ -59,4 +52,13 @@ div{
 	color: black;
 	height: 30px;
 	overflow: hidden;
+}
+
+#temp{
+	font-size: 80px;
+	text-align: left;
+}
+
+#chill{
+	font-size: 40px;
 }
