@@ -1,15 +1,16 @@
-define(['jquery', 'underscore', 'backbone', 'moment', 'views/events/item', 'text!templates/events/day.html'
+define(['jquery', 'underscore', 'backbone', 'moment', 'common', 'views/events/item', 'text!templates/events/day.html', 'text!templates/events/dayWeather.html'
 
-], function($, _, Backbone, moment, itemView, dayTemplate) {
+], function($, _, Backbone, moment, common, itemView, dayTemplate, displayWeatherTemplate) {
 
   var eventListView = Backbone.View.extend({
     initialize: function() {
       this.template = _.template(dayTemplate);
+      this.weatherTemplate = _.template(displayWeatherTemplate);
     },
     render: function() {
       var self = this;
  
-//console.log( this.model.date.format("dddd MMM Do") );
+
 
         $(self.el).html(self.template({
           date: this.model.date.format("ddd MMM Do"),
@@ -73,8 +74,14 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'views/events/item', 'text
       });
 
       return output;
-    }
-
+    },
+    displayWeather: function(result){
+      var self = this;
+        $('.temps', self.el).html(self.weatherTemplate({
+          common: common,
+        result: result
+      }));
+      }
 
   });
 

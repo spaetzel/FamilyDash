@@ -1,6 +1,9 @@
 define(['jquery', 'order!underscore', 'backbone', 'views/events/list', 'views/chartbeat/chartbeat', 'views/clock/clock', 'views/weather/weather', 'views/photos/photos', 'text!templates/main/home.html'], 
   function($, _, Backbone, eventsList, chartbeatView, clockView, weatherView, photosView, mainTemplate) {
 
+    var weather;
+    var events;
+
   var mainHomeView = Backbone.View.extend({
 
     el: $('#bodyArea'),
@@ -14,7 +17,7 @@ define(['jquery', 'order!underscore', 'backbone', 'views/events/list', 'views/ch
       $(this.el).html(this.template());
 
 
-      var events = new eventsList({
+      events = new eventsList({
         el: $('#events')
       });
 
@@ -25,7 +28,7 @@ define(['jquery', 'order!underscore', 'backbone', 'views/events/list', 'views/ch
       });
       clock.render();
 
-       var weather = new weatherView({
+      weather = new weatherView({
         el: $('#weather')
       });
       weather.render();
@@ -41,10 +44,27 @@ define(['jquery', 'order!underscore', 'backbone', 'views/events/list', 'views/ch
       });
       chartbeat.render();
 
+      this.fetchWeather();
+
 
     },
     fetchWeather: function(callback){
+        var self = this;
 
+       var url = "https://api.forecast.io/forecast/2d6c80b1da58dfb81fcf5ae22b9a441c/43.431598,-80.519807?units=si&callback=?";
+
+      $.ajax({
+        url: url,
+        method: 'GET',
+        dataType: 'jsonp'
+      }).always(function(result){
+          weather.displayWeather( result );
+          events.displayWeather( result );
+
+
+      });
+
+      setTimeout( function(){ self.fetchWeather(); }, 150000 );
     }
 
   });

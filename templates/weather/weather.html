@@ -1,6 +1,6 @@
 <%
-	var current = Math.round(currently.temperature );
-	var windChill = Math.round(currently.apparentTemperature );
+	var current = common.roundTemp(currently.temperature );
+	var windChill = common.roundTemp(currently.apparentTemperature );
 
 	var showChill = false;
 
