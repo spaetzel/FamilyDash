@@ -17,7 +17,7 @@ body, h1, h2, h3{
 #clock{
 	text-align: center;
 	font-size: 80px;
-	padding: 50px 0;
+	padding: 15px 0;
 }
 
 #events{
@@ -59,8 +59,35 @@ body, h1, h2, h3{
 	text-align: left;
 }
 
+#temp .icon{
+	font-size: 100px;
+	margin-right: -80px;
+	color: #474747;
+}
+
+#windChill{
+	padding: 30px 0 0 15px;
+}
+
 #chill{
 	font-size: 40px;
+}
+
+#temperatures{
+	text-align: center;
+	width: 100%;
+}
+
+#temperatures>div{
+	display: inline-block;
+
+}
+
+#currentForecast{
+	clear: both;
+	width: 100%;
+	text-align: center;
+	font-size: 30px;
 }
 
 .temps{

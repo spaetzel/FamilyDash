@@ -10,15 +10,16 @@
 
 %>
 
-<div class="row">
-	<div class="span4 offset1">
-		<div class="row">
-			<div class="span2" id="temp">
+
+		<div id="temperatures">
+
+			<div id="temp">
+				<i class="icon wi-day-thunderstorm"></i>
 				<%= current  %> 
 				<i class="wi-celcius"></i>
 			</div>
 			<% if( showChill ){ %>
-			<div class="span2" id="windChill">
+			<div id="windChill">
 				Feels Like
 				<div id="chill">
 				<%= windChill %>
@@ -27,8 +28,6 @@
 			</div> 
 			<% } %>
 		</div>
-		<div id="currentForecast">
+		<div class="row" id="currentForecast">
 			<%= currently.summary %>
 		</div>
-	</div>
-</div>
