@@ -12,11 +12,11 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'config', 'views/events/da
     render: function() {
       var urls = config.urls;
 
-      $(this.el).html(this.template() );
+     
 
       var eventsUrl = "http://pipes.yahoo.com/pipes/pipe.run?_id=7d1612a234562c3c4b52ffc1bc682fb0&_render=json&iCalURL=";
 
-      this.fetchEvents(urls, eventsUrl, $('#list', this.el));
+      this.fetchEvents(urls, eventsUrl);
 
 
       var self = this;
@@ -25,7 +25,10 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'config', 'views/events/da
 
       return this;
     },
-    getDates: function(element, events){
+    getDates: function( events){
+
+      var element = $('#list', this.el);
+
       var self = this;
       
       var date = moment({hour: 0});
@@ -57,7 +60,7 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'config', 'views/events/da
       }
 
     },
-    fetchEvents: function(urls, pipe, element){
+    fetchEvents: function(urls, pipe){
 
       var self = this;
 
@@ -65,12 +68,13 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'config', 'views/events/da
        var events = [];
 
       var renderEvents = _.after( urls.length, function(){
+           $(self.el).html(self.template() );
 
           var sorted = _.sortBy( events, function(curEvent){
             return curEvent.item.dtstart;
           });
 
-          self.getDates(element, sorted);
+          self.getDates(sorted);
 
  
       });
