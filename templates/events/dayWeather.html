@@ -1,1 +1,1 @@
-<%= common.roundTemp(result.temperatureMax) %> <i class="wi-celcius"></i> / <%= common.roundTemp(result.temperatureMin) %> <i class="wi-celcius"></i>
+<i class="icon <%= common.translateIcon( result.icon ) %>"></i> <span class="highLow"><%= common.roundTemp(result.temperatureMax) %> <i class="wi-celcius"></i></span> / <span class="highLow"><%= common.roundTemp(result.temperatureMin) %> <i class="wi-celcius"></i></span>

@@ -109,9 +109,9 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'config', 'views/events/da
             curView.displayWeather( weather );
           }
         }
-      }else{
-        storedWeather = result;
+
       }
+      storedWeather = result;
     }
 
   });

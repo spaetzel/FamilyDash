@@ -100,3 +100,9 @@ body, h1, h2, h3{
 	margin-top: 50px;
 	margin-left: 130px;
 }
+
+.highLow{
+	width: 50px;
+	display: inline-block;
+	text-align: right;
+}
