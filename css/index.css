@@ -1,11 +1,24 @@
-body{
-	background: black;
+body, .chartbeatWidget{
+	background: black !important;
 	line-height: inherit;
 }
 
-body, h1, h2, h3{
+body, h1, h2, h3, .chartbeatWidget, .chartbeatNumber{
 	color: white; 
+	border: none !important;
 	font-family: 'Domine', serif;
+}
+
+.chartbeatWidget, .chartbeatNumber{
+	color: white !important; 
+}
+
+.chartbeatNumber{
+	font-size: 60px !important;
+}
+
+.chartbeatGauge, .branding{
+	display: none;
 }
 
 #mainContainer
@@ -97,7 +110,7 @@ body, h1, h2, h3{
 }
 
 #chartbeat{
-	margin-top: 50px;
+	margin-top: 15px;
 	margin-left: 130px;
 }
 
