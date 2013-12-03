@@ -10,7 +10,7 @@ require.config({
     sitetotal: 'libs/chartbeat/sitetotal',
     moment: 'libs/moment/moment'
   }
-  , urlArgs: "bust=" + (new Date()).getTime()
+  //, urlArgs: "bust=" + (new Date()).getTime()
 });
 
 require([
