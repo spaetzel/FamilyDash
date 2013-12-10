@@ -25,7 +25,7 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'config', 'views/events/da
 
       return this;
     },
-    getDates: function( events){
+    getDates: function( events ){
 
       var element = $('#list', this.el);
 
@@ -95,7 +95,8 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'config', 'views/events/da
               events.push( {
                 item: curItem,
                 color: curUrl.color,
-                name: curUrl.name } );
+                name: curUrl.name,
+                offset: curUrl.offset } );
             });
             renderEvents();
         });

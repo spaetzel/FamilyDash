@@ -42,21 +42,30 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'common', 'views/events/it
 
         var startTime = curItem.item['y:dtstart'].utime * 1000;
         
-        var endTime = curItem.item['y:dtend'].utime * 1000;
+        var endTime;
+
+        if( curItem.item['y:dtend'] != null ){
+          endTime = curItem.item['y:dtend'].utime * 1000;
+        }else{
+       
+          endTime = startTime + 3600000 // add one hour;
+        }
+
 
         var startMoment = new moment( startTime );
         var endMoment = new moment( endTime );
 
         // Fix time zone weirdness from pipes
 
-        if( startMoment.isDST() ){
-          startMoment.add('hours', 4);
-          endMoment.add('hours', 4);
+        var offset = curItem.offset;
 
-        }else{
-          startMoment.add('hours', 5);
-          endMoment.add('hours', 5);
+        if( startMoment.isDST() ){
+          offset -= 1;
+
         }
+
+        startMoment.add('hours', offset);
+        endMoment.add('hours', offset);
 
         startTime = parseInt(startMoment.format("X")) * 1000;
         endTime = parseInt(endMoment.format("X")) * 1000;
