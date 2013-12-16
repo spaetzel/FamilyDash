@@ -1,5 +1,5 @@
-define(['jquery', 'order!underscore', 'backbone', 'views/events/list', 'views/chartbeat/chartbeat', 'views/clock/clock', 'views/weather/weather', 'views/photos/photos', 'text!templates/main/home.html'], 
-  function($, _, Backbone, eventsList, chartbeatView, clockView, weatherView, photosView, mainTemplate) {
+define(['jquery', 'order!underscore', 'backbone', 'views/events/list', 'views/clock/clock', 'views/weather/weather', 'views/photos/photos', 'text!templates/main/home.html'], 
+  function($, _, Backbone, eventsList, clockView, weatherView, photosView, mainTemplate) {
 
     var weather;
     var events;
@@ -41,10 +41,6 @@ define(['jquery', 'order!underscore', 'backbone', 'views/events/list', 'views/ch
       photos.render();
 */
 
-      var chartbeat = new chartbeatView({
-        el: $('#chartbeat')
-      });
-      chartbeat.render();
 
       this.fetchWeather();
 
