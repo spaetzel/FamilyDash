@@ -11,14 +11,17 @@ define(['jquery', 'underscore', 'backbone', 'config', 'text!templates/chartbeat/
   
         }));
 
-        var chartbeatConfig = {
+        var chartbeatConfig1 = {
             'api': 'https://chartbeat.com/api/quickstats/?apikey=' + config.chartbeat.apiKey + '&host=' + config.chartbeat.host,
             'element': 'chartbeatGauge',
-            'label': 'Visitors CastRoller',
+            'label': 'CastRoller',
             'width': 230
         };
 
-        var chartbeat = new SiteTotal(chartbeatConfig);
+        var chartbeat1 = new SiteTotal(chartbeatConfig1);
+
+
+
 
 
       return this;

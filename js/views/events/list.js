@@ -2,6 +2,9 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'config', 'views/events/da
 
 ], function($, _, Backbone, moment, config, dayView, listTemplate) {
 
+  var dayViews;
+  var storedWeather;
+
   var eventListView = Backbone.View.extend({
     initialize: function() {
       this.template = _.template(listTemplate);
@@ -9,11 +12,11 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'config', 'views/events/da
     render: function() {
       var urls = config.urls;
 
-      $(this.el).html(this.template() );
+     
 
       var eventsUrl = "http://pipes.yahoo.com/pipes/pipe.run?_id=7d1612a234562c3c4b52ffc1bc682fb0&_render=json&iCalURL=";
 
-      this.fetchEvents(urls, eventsUrl, $('#list', this.el));
+      this.fetchEvents(urls, eventsUrl);
 
 
       var self = this;
@@ -22,10 +25,15 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'config', 'views/events/da
 
       return this;
     },
-    getDates: function(element, events){
+    getDates: function( events ){
 
+      var element = $('#list', this.el);
+
+      var self = this;
+      
       var date = moment({hour: 0});
 
+      dayViews = new Array();
 
       for( var i = 0; i < 24; i++ ){
        
@@ -40,13 +48,19 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'config', 'views/events/da
               view.render().el
             );
 
+          dayViews.push(view);
+
           date.add('days', 1);
 
 
       }
 
+      if( storedWeather != null ){
+        self.displayWeather( storedWeather );
+      }
+
     },
-    fetchEvents: function(urls, pipe, element){
+    fetchEvents: function(urls, pipe){
 
       var self = this;
 
@@ -54,24 +68,14 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'config', 'views/events/da
        var events = [];
 
       var renderEvents = _.after( urls.length, function(){
+           $(self.el).html(self.template() );
 
           var sorted = _.sortBy( events, function(curEvent){
             return curEvent.item.dtstart;
           });
 
-          self.getDates(element, sorted);
+          self.getDates(sorted);
 
-/*
-          _.each(sorted, function(curItem){
-            var view = new itemView({
-              model: curItem
-            });
-            $(element).append(
-              view.render().el
-            );
-
-          });
-*/
  
       });
 
@@ -91,12 +95,28 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'config', 'views/events/da
               events.push( {
                 item: curItem,
                 color: curUrl.color,
-                name: curUrl.name } );
+                name: curUrl.name,
+                offset: curUrl.offset } );
             });
             renderEvents();
         });
       });
 
+    },
+    displayWeather: function(result){
+      if( dayViews != null ){
+
+        for( var i = 0; i < dayViews.length; i++){
+          var curView = dayViews[i];
+          var weather = result.daily.data[i];
+
+          if( weather != null ){
+            curView.displayWeather( weather );
+          }
+        }
+
+      }
+      storedWeather = result;
     }
 
   });

@@ -1,10 +1,24 @@
-body{
-	background: black;
+body, .chartbeatWidget{
+	background: black !important;
+	line-height: inherit;
 }
 
-body, h1, h2, h3{
+body, h1, h2, h3, .chartbeatWidget, .chartbeatNumber{
 	color: white; 
+	border: none !important;
 	font-family: 'Domine', serif;
+}
+
+.chartbeatWidget, .chartbeatNumber{
+	color: white !important; 
+}
+
+.chartbeatNumber{
+	font-size: 60px !important;
+}
+
+.chartbeatGauge, .branding{
+	display: none;
 }
 
 #mainContainer
@@ -13,18 +27,10 @@ body, h1, h2, h3{
 
 }
 
-div{
-	overflow: hidden;
-}
-
-#weather{
-	background: white;
-}
-
 #clock{
 	text-align: center;
 	font-size: 80px;
-	padding: 50px 0;
+	padding: 15px 0;
 }
 
 #events{
@@ -59,4 +65,57 @@ div{
 	color: black;
 	height: 30px;
 	overflow: hidden;
+}
+
+#temp{
+	font-size: 80px;
+	text-align: left;
+}
+
+#temp .icon{
+	font-size: 100px;
+	margin-right: -80px;
+	color: #474747;
+}
+
+#windChill{
+	padding: 30px 0 0 15px;
+}
+
+#chill{
+	font-size: 40px;
+}
+
+#temperatures{
+	text-align: center;
+	width: 100%;
+}
+
+#temperatures>div{
+	display: inline-block;
+
+}
+
+#currentForecast{
+	clear: both;
+	width: 100%;
+	text-align: center;
+	font-size: 30px;
+}
+
+.temps{
+	font-size: 20px;
+	height: 20px;
+	float: right;
+}
+
+#chartbeat{
+	margin-top: 15px;
+	margin-left: 130px;
+}
+
+.highLow{
+	width: 50px;
+	display: inline-block;
+	text-align: right;
 }

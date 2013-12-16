@@ -1,15 +1,16 @@
-define(['jquery', 'underscore', 'backbone', 'moment', 'views/events/item', 'text!templates/events/day.html'
+define(['jquery', 'underscore', 'backbone', 'moment', 'common', 'views/events/item', 'text!templates/events/day.html', 'text!templates/events/dayWeather.html'
 
-], function($, _, Backbone, moment, itemView, dayTemplate) {
+], function($, _, Backbone, moment, common, itemView, dayTemplate, displayWeatherTemplate) {
 
   var eventListView = Backbone.View.extend({
     initialize: function() {
       this.template = _.template(dayTemplate);
+      this.weatherTemplate = _.template(displayWeatherTemplate);
     },
     render: function() {
       var self = this;
  
-//console.log( this.model.date.format("dddd MMM Do") );
+
 
         $(self.el).html(self.template({
           date: this.model.date.format("ddd MMM Do"),
@@ -41,21 +42,30 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'views/events/item', 'text
 
         var startTime = curItem.item['y:dtstart'].utime * 1000;
         
-        var endTime = curItem.item['y:dtend'].utime * 1000;
+        var endTime;
+
+        if( curItem.item['y:dtend'] != null ){
+          endTime = curItem.item['y:dtend'].utime * 1000;
+        }else{
+       
+          endTime = startTime + 3600000 // add one hour;
+        }
+
 
         var startMoment = new moment( startTime );
         var endMoment = new moment( endTime );
 
         // Fix time zone weirdness from pipes
 
-        if( startMoment.isDST() ){
-          startMoment.add('hours', 4);
-          endMoment.add('hours', 4);
+        var offset = curItem.offset;
 
-        }else{
-          startMoment.add('hours', 5);
-          endMoment.add('hours', 5);
+        if( startMoment.isDST() ){
+          offset -= 1;
+
         }
+
+        startMoment.add('hours', offset);
+        endMoment.add('hours', offset);
 
         startTime = parseInt(startMoment.format("X")) * 1000;
         endTime = parseInt(endMoment.format("X")) * 1000;
@@ -73,8 +83,15 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'views/events/item', 'text
       });
 
       return output;
-    }
+    },
+    displayWeather: function(result){
 
+      var self = this;
+        $('.temps', self.el).html(self.weatherTemplate({
+          common: common,
+        result: result
+      }));
+      }
 
   });
 
