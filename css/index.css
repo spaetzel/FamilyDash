@@ -1,25 +1,14 @@
-body, .chartbeatWidget{
+body{
 	background: black !important;
 	line-height: inherit;
 }
 
-body, h1, h2, h3, .chartbeatWidget, .chartbeatNumber{
-	color: white; 
+body, h1, h2, h3{
+	color: white;
 	border: none !important;
 	font-family: 'Domine', serif;
 }
 
-.chartbeatWidget, .chartbeatNumber{
-	color: white !important; 
-}
-
-.chartbeatNumber{
-	font-size: 60px !important;
-}
-
-.chartbeatGauge, .branding{
-	display: none;
-}
 
 #mainContainer
 {
@@ -35,9 +24,8 @@ body, h1, h2, h3, .chartbeatWidget, .chartbeatNumber{
 }
 
 #events{
-	height: 580px;
+	height: 768px;
 	overflow: hidden;
-	margin-bottom: 5px;
 }
 
 #events h1{
@@ -108,11 +96,6 @@ body, h1, h2, h3, .chartbeatWidget, .chartbeatNumber{
 	font-size: 20px;
 	height: 20px;
 	float: right;
-}
-
-#chartbeat{
-	margin-top: 15px;
-	margin-left: 130px;
 }
 
 .highLow{
