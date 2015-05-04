@@ -25,7 +25,7 @@ body, h1, h2, h3{
 }
 
 #events{
-	height: 580px;
+	height: 1024px;
 	overflow: hidden;
 	margin-bottom: 5px;
 }
@@ -109,4 +109,19 @@ body, h1, h2, h3{
 	width: 50px;
 	display: inline-block;
 	text-align: right;
+}
+
+#hourly{
+	margin-top: 20px;
+	font-size: 20px;
+}
+
+#hourly .span1{
+	margin-left: 10px;
+	width: 70px;
+	text-align: center;
+}
+
+#hourly .temp{
+	font-size: 35px;
 }

@@ -28,7 +28,14 @@ var common = {
   			return "wi-day-sunny-overcast";
   		default:
   	}
-  }
+  },
+	formatHour: function(hour){
+		if( hour > 12 ){
+			return ( hour - 12 ) + " PM";
+		}else{
+			return hour + " AM";
+		}
+	}
 }
 	return common;
 	});
