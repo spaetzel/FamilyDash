@@ -22,11 +22,6 @@ define(['jquery', 'underscore', 'backbone', 'common', 'text!templates/weather/we
         }));
 
 
-        _.each( result.hourly.data, function(curHour){
-          var date = new Date( curHour.time * 1000 );
-          console.log(common.formatHour( date.getHours() ), curHour.icon, curHour.temperature, curHour.precipProbability );
-        });
-
     }
 
   });
