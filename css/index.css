@@ -1,25 +1,15 @@
-body, .chartbeatWidget{
+body{
 	background: black !important;
 	line-height: inherit;
 }
 
-body, h1, h2, h3, .chartbeatWidget, .chartbeatNumber{
-	color: white; 
+body, h1, h2, h3{
+	color: white;
 	border: none !important;
 	font-family: 'Domine', serif;
 }
 
-.chartbeatWidget, .chartbeatNumber{
-	color: white !important; 
-}
 
-.chartbeatNumber{
-	font-size: 60px !important;
-}
-
-.chartbeatGauge, .branding{
-	display: none;
-}
 
 #mainContainer
 {
@@ -31,10 +21,7 @@ body, h1, h2, h3, .chartbeatWidget, .chartbeatNumber{
 	text-align: center;
 	font-size: 80px;
 	padding: 15px 0;
-<<<<<<< HEAD
-=======
 	font-family: 'Fira Mono';
->>>>>>> 218a85ab1e970bc951b3bb152e4d9ce7e6d95eda
 }
 
 #events{
