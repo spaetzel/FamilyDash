@@ -31,6 +31,10 @@ body, h1, h2, h3, .chartbeatWidget, .chartbeatNumber{
 	text-align: center;
 	font-size: 80px;
 	padding: 15px 0;
+<<<<<<< HEAD
+=======
+	font-family: 'Fira Mono';
+>>>>>>> 218a85ab1e970bc951b3bb152e4d9ce7e6d95eda
 }
 
 #events{
