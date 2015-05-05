@@ -1,5 +1,8 @@
-define(['jquery', 'order!underscore', 'backbone', 'views/events/list', 'views/clock/clock', 'views/weather/weather', 'views/photos/photos', 'text!templates/main/home.html'], 
+define(['jquery', 'order!underscore', 'backbone', 'views/events/list', 'views/clock/clock', 'views/weather/weather', 'views/photos/photos', 'text!templates/main/home.html'],
   function($, _, Backbone, eventsList, clockView, weatherView, photosView, mainTemplate) {
+
+    var weather;
+    var events;
 
     var weather;
     var events;
@@ -33,13 +36,7 @@ define(['jquery', 'order!underscore', 'backbone', 'views/events/list', 'views/cl
       });
       weather.render();
 
-/*
 
-      var photos = new photosView({
-        el: $('#photos')
-      });
-      photos.render();
-*/
 
 
       this.fetchWeather();

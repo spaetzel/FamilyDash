@@ -15,7 +15,7 @@
 
 			<div id="temp">
 				<i class="icon <%= common.translateIcon( currently.icon ) %>"></i>
-				<%= current  %> 
+				<%= current  %>
 				<i class="wi-celcius"></i>
 			</div>
 			<% if( showChill ){ %>
@@ -25,9 +25,23 @@
 				<%= windChill %>
 				<i class="wi-celcius"></i>
 				</div>
-			</div> 
+			</div>
 			<% } %>
 		</div>
 		<div class="row" id="currentForecast">
 			<%= currently.summary %>
+		</div>
+
+		<div class="row" id="hourly">
+			<% _.each( hourly, function( curHour ){
+				var date = new Date( curHour.time * 1000 );
+				var time = common.formatHour( date.getHours() );
+				%>
+				<div class="span1">
+					<%= time %><br/>
+					<div class="temp"><i class="icon <%= common.translateIcon( curHour.icon ) %>"></i>
+					<%= common.roundTemp( curHour.temperature ) %></div>
+					<%= Math.round( curHour.precipProbability * 100 ) %>%
+				</div>
+			<% }); %>
 		</div>

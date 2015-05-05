@@ -10,6 +10,7 @@ body, h1, h2, h3{
 }
 
 
+
 #mainContainer
 {
 	margin: 10px;
@@ -103,3 +104,21 @@ body, h1, h2, h3{
 	display: inline-block;
 	text-align: right;
 }
+<<<<<<< HEAD
+=======
+
+#hourly{
+	margin-top: 20px;
+	font-size: 20px;
+}
+
+#hourly .span1{
+	margin-left: 10px;
+	width: 70px;
+	text-align: center;
+}
+
+#hourly .temp{
+	font-size: 35px;
+}
+>>>>>>> acdcd34cb33b365815c82548397143486d24adaa

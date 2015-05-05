@@ -17,8 +17,10 @@ define(['jquery', 'underscore', 'backbone', 'common', 'text!templates/weather/we
 
         $(self.el).html(self.template({
             common: common,
-            currently: result.currently
+            currently: result.currently,
+            hourly: _.first(result.hourly.data, 6)
         }));
+
 
     }
 
