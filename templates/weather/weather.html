@@ -29,7 +29,7 @@
 			<% } %>
 		</div>
 		<div class="row" id="currentForecast">
-			<%= currently.summary %>
+			<%= summary %>
 		</div>
 
 		<div class="row" id="hourly">
@@ -39,9 +39,12 @@
 				%>
 				<div class="span1">
 					<%= time %><br/>
-					<div class="temp"><i class="icon <%= common.translateIcon( curHour.icon ) %>"></i>
+					<div class="temp"><i class="icon <%= common.translateIcon( curHour.icon ) %>"></i><br/>
 					<%= common.roundTemp( curHour.temperature ) %></div>
 					<%= Math.round( curHour.precipProbability * 100 ) %>%
 				</div>
 			<% }); %>
+		</div>
+		<div id="forecast">
+						<%= forecast %>
 		</div>

@@ -7,14 +7,23 @@ body, h1, h2, h3{
 	color: white;
 	border: none !important;
 	font-family: 'Domine', serif;
+	overflow: hidden;
 }
-
-
 
 #mainContainer
 {
 	margin: 10px;
+	width: 1024px;
+	height: 768px;
+	overflow: hidden;
+}
 
+.span6{
+	width: 490px;
+}
+
+#right{
+	margin-left: 30px;
 }
 
 #clock{
@@ -22,11 +31,6 @@ body, h1, h2, h3{
 	font-size: 80px;
 	padding: 15px 0;
 	font-family: 'Fira Mono';
-}
-
-#events{
-	height: 768px;
-	overflow: hidden;
 }
 
 #events h1{
@@ -86,11 +90,17 @@ body, h1, h2, h3{
 
 }
 
-#currentForecast{
+#currentForecast, #forecast{
 	clear: both;
 	width: 100%;
 	text-align: center;
 	font-size: 30px;
+}
+
+#forecast{
+		font-size: 20px;
+		text-align: center;
+		margin-top: 10px;
 }
 
 .temps{
@@ -104,16 +114,15 @@ body, h1, h2, h3{
 	display: inline-block;
 	text-align: right;
 }
-<<<<<<< HEAD
-=======
 
 #hourly{
+	/* padding-left: 30px; */
 	margin-top: 20px;
 	font-size: 20px;
 }
 
 #hourly .span1{
-	margin-left: 10px;
+	margin-left: 15px;
 	width: 70px;
 	text-align: center;
 }
@@ -121,4 +130,3 @@ body, h1, h2, h3{
 #hourly .temp{
 	font-size: 35px;
 }
->>>>>>> acdcd34cb33b365815c82548397143486d24adaa
