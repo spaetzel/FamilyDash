@@ -12,9 +12,9 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'config', 'views/events/da
     render: function() {
       var urls = config.urls;
 
-     
 
-      var eventsUrl = "http://pipes.yahoo.com/pipes/pipe.run?_id=7d1612a234562c3c4b52ffc1bc682fb0&_render=json&iCalURL=";
+
+      var eventsUrl = config.ical2json;
 
       this.fetchEvents(urls, eventsUrl);
 
@@ -30,13 +30,13 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'config', 'views/events/da
       var element = $('#list', this.el);
 
       var self = this;
-      
+
       var date = moment({hour: 0});
 
       dayViews = new Array();
 
       for( var i = 0; i < 24; i++ ){
-       
+
 
          var view = new dayView({
               model: {
@@ -71,25 +71,25 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'config', 'views/events/da
            $(self.el).html(self.template() );
 
           var sorted = _.sortBy( events, function(curEvent){
-            return curEvent.item.dtstart;
+            return curEvent.item.DTSTART;
           });
 
           self.getDates(sorted);
 
- 
+
       });
 
-      
+
       var now = new Date();
 
       _.each( urls, function(curUrl){
-        var fullUrl = pipe + encodeURIComponent(curUrl.url) + "&_callback=?";
+        var fullUrl = pipe + curUrl.url + "?callback=?";
 
 
         $.getJSON(fullUrl, function(data){
 
 
-            _.each( data.value.items, function(curItem){
+            _.each( data.VCALENDAR.VEVENT, function(curItem){
 
 
               events.push( {

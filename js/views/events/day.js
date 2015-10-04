@@ -9,7 +9,7 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'common', 'views/events/it
     },
     render: function() {
       var self = this;
- 
+
 
 
         $(self.el).html(self.template({
@@ -26,7 +26,7 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'common', 'views/events/it
         $('ul', self.el).append( view.render().el );
       });
 
-  
+
 
       return this;
     },
@@ -38,16 +38,17 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'common', 'views/events/it
       var endDate = thisDate + 86400000;
 
 
+
       _.each( this.model.items, function( curItem ){
 
-        var startTime = curItem.item['y:dtstart'].utime * 1000;
-        
+        var startTime = curItem.item.DTSTART * 1000;
+
         var endTime;
 
-        if( curItem.item['y:dtend'] != null ){
-          endTime = curItem.item['y:dtend'].utime * 1000;
+        if( curItem.item.DTEND != null ){
+          endTime = curItem.item.DTEND * 1000;
         }else{
-       
+
           endTime = startTime + 3600000 // add one hour;
         }
 
@@ -55,26 +56,15 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'common', 'views/events/it
         var startMoment = new moment( startTime );
         var endMoment = new moment( endTime );
 
-        // Fix time zone weirdness from pipes
-
-        var offset = curItem.offset;
-
-        if( startMoment.isDST() ){
-          offset -= 1;
-
-        }
-
-        startMoment.add('hours', offset);
-        endMoment.add('hours', offset);
 
         startTime = parseInt(startMoment.format("X")) * 1000;
         endTime = parseInt(endMoment.format("X")) * 1000;
-        
+
         if( startTime >= thisDate && endTime < endDate ){
           output.push({
               color: curItem.color,
               name: curItem.name,
-              title: curItem.item.title,
+              title: curItem.item.SUMMARY,
               start: startMoment.format("h:mm a"),
               end: endMoment.format("h:mm a")
           });

@@ -8,14 +8,13 @@ define(['jquery', 'underscore', 'backbone', 'text!templates/events/item.html'
     },
     render: function() {
       var self = this;
- 
 
         $(self.el).html(self.template({
   			item: self.model
         }));
 
 
-  
+
 
       return this;
     }
