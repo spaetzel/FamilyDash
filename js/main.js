@@ -7,7 +7,8 @@ require.config({
     text: 'libs/require/text',
     templates: '../templates',
     bootstrap: 'libs/bootstrap/bootstrap.min',
-    moment: 'libs/moment/moment'
+    moment: 'libs/moment/moment.min',
+    momentTimezone: 'libs/moment/moment-timezone'
   }
   //, urlArgs: "bust=" + (new Date()).getTime()
 });

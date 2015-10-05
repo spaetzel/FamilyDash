@@ -1,6 +1,6 @@
-define(['jquery', 'underscore', 'backbone', 'moment', 'common', 'views/events/item', 'text!templates/events/day.html', 'text!templates/events/dayWeather.html'
+define(['jquery', 'underscore', 'backbone', 'moment', 'momentTimezone', 'common', 'views/events/item', 'text!templates/events/day.html', 'text!templates/events/dayWeather.html'
 
-], function($, _, Backbone, moment, common, itemView, dayTemplate, displayWeatherTemplate) {
+], function($, _, Backbone, moment, momentTimezone, common, itemView, dayTemplate, displayWeatherTemplate) {
 
   var eventListView = Backbone.View.extend({
     initialize: function() {
@@ -53,20 +53,21 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'common', 'views/events/it
         }
 
 
-        var startMoment = new moment( startTime );
-        var endMoment = new moment( endTime );
+        var startMoment = moment.tz(startTime, 'GMT' );
+
+        var endMoment = moment.tz(endTime, 'GMT' );
 
 
-        startTime = parseInt(startMoment.format("X")) * 1000;
-        endTime = parseInt(endMoment.format("X")) * 1000;
+        startTime = parseInt(startMoment.tz('America/Toronto').format("X")) * 1000;
+        endTime = parseInt(endMoment.tz('America/Toronto').format("X")) * 1000;
 
         if( startTime >= thisDate && endTime < endDate ){
           output.push({
               color: curItem.color,
               name: curItem.name,
               title: curItem.item.SUMMARY,
-              start: startMoment.format("h:mm a"),
-              end: endMoment.format("h:mm a")
+              start: startMoment.tz('America/Toronto').format( "h:mm a"),
+              end: endMoment.tz('America/Toronto').format("h:mm a")
           });
 
         }

@@ -50,7 +50,7 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'config', 'views/events/da
 
           dayViews.push(view);
 
-          date.add('days', 1);
+          date.add( 1, 'days');
 
 
       }
