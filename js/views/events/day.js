@@ -53,9 +53,9 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'momentTimezone', 'common'
         }
 
 
-        var startMoment = moment.tz(startTime, 'GMT' );
+        var startMoment = moment.tz(startTime, 'GMT' ).add(curItem.offset, 'hours');
 
-        var endMoment = moment.tz(endTime, 'GMT' );
+        var endMoment = moment.tz(endTime, 'GMT' ).add(curItem.offset, 'hours');
 
 
         startTime = parseInt(startMoment.tz('America/Toronto').format("X")) * 1000;
