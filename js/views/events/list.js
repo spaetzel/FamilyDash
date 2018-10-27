@@ -88,15 +88,23 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'config', 'views/events/da
 
         $.getJSON(fullUrl, function(data){
 
+            var addedEvents = 0;
 
             _.each( data.VCALENDAR.VEVENT, function(curItem){
 
+              if ( addedEvents <= 10 ){
+                // Only add 10 events per url to the list
+           
+                events.push( {
+                  item: curItem,
+                  color: curUrl.color,
+                  name: curUrl.name,
+                  offset: curUrl.offset } 
+                );
 
-              events.push( {
-                item: curItem,
-                color: curUrl.color,
-                name: curUrl.name,
-                offset: curUrl.offset } );
+                addedEvents++;
+              }
+
             });
             renderEvents();
         });
