@@ -146,3 +146,23 @@ body, h1, h2, h3{
 #hourly .temp{
 	font-size: 50px;
 }
+
+#sensors{
+	width: 290px;
+	font-size: 50px;
+	margin-left: 20px;
+	text-align: right;
+}
+
+#sensors h3{
+	font-size: 40px;
+	padding: 10px 0;
+}
+
+.sensor{
+	margin-bottom: 20px;
+}
+
+.setTemperature{
+	font-size: 30px;
+}

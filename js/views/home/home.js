@@ -1,5 +1,6 @@
-define(['jquery', 'order!underscore', 'backbone', 'views/events/list', 'views/clock/clock', 'views/weather/weather', 'views/photos/photos', 'text!templates/main/home.html'],
-  function($, _, Backbone, eventsList, clockView, weatherView, photosView, mainTemplate) {
+define(['jquery', 'order!underscore', 'backbone', 'views/events/list', 'views/clock/clock', 'views/weather/weather', 
+'views/sensor/climate', 'views/sensor/state', 'text!templates/main/home.html'],
+  function($, _, Backbone, eventsList, clockView, weatherView, ClimateView, StateView, mainTemplate) {
 
     var weather;
     var events;
@@ -31,6 +32,48 @@ define(['jquery', 'order!underscore', 'backbone', 'views/events/list', 'views/cl
       });
       clock.render();
 
+      this.evelynRoom = new ClimateView({
+        el: $('#evelynRoom', this.el),
+        model : {
+          entityId : 'climate.evelyn_heater'
+        }
+      });
+      this.evelynRoom.render();
+ 
+      this.ecobee = new ClimateView({
+        el: $('#ecobee', this.el),
+        model : {
+          entityId : 'climate.my_ecobee3'
+        }
+      });
+      this.ecobee.render();
+
+      this.office = new ClimateView({
+        el: $('#office', this.el),
+        model : {
+          entityId : 'climate.office_heater'
+        }
+      });
+      this.office.render();
+
+
+      this.garage = new StateView({
+        el: $('#garageDoor', this.el),
+        model : {
+          entityId : 'cover.garage_door'
+        }
+      });
+      this.garage.render();
+
+      this.outside = new StateView({
+        el: $('#outside', this.el),
+        model : {
+          entityId : 'light.outside'
+        }
+      });
+      this.outside.render();
+
+
       weather = new weatherView({
         el: $('#weather')
       });
@@ -46,7 +89,7 @@ define(['jquery', 'order!underscore', 'backbone', 'views/events/list', 'views/cl
     fetchWeather: function(callback){
         var self = this;
 
-       var url = "https://api.forecast.io/forecast/2d6c80b1da58dfb81fcf5ae22b9a441c/43.431598,-80.519807?units=si&callback=?";
+       var url = "https://api.darksky.net/forecast/da017f7fd9caeb26a344bcca792d15a2/43.431598,-80.519807?units=si&callback=?";
 
       $.ajax({
         url: url,
