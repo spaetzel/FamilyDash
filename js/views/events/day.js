@@ -13,7 +13,8 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'momentTimezone', 'common'
 
 
         $(self.el).html(self.template({
-          date: this.model.date.format("ddd MMM Do"),
+          dayOfWeek : this.model.date.format("ddd"),
+          date: this.model.date.format("MMM Do"),
         }));
 
       var items = this.getItems();

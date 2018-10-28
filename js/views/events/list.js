@@ -92,8 +92,8 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'config', 'views/events/da
 
             _.each( data.VCALENDAR.VEVENT, function(curItem){
 
-              if ( addedEvents <= 10 ){
-                // Only add 10 events per url to the list
+              if ( addedEvents <= 20 ){
+                // Only add 20 events per url to the list
            
                 events.push( {
                   item: curItem,

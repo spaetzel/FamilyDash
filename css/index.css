@@ -19,7 +19,7 @@ body, h1, h2, h3{
 }
 
 .span6{
-	width: 900px;
+	width: 600px;
 }
 
 #right{
@@ -28,15 +28,24 @@ body, h1, h2, h3{
 
 #clock{
 	text-align: center;
-	font-size: 160px;
+	font-size: 120px;
 	padding: 15px 0;
 	font-family: 'Fira Mono';
 }
 
 #events h1{
-	font-size: 60px;
-	margin: 10px 20px;
+	font-size: 40px;
+	margin: 0px 20px;
 	padding: 10px 20px;
+}
+
+#events>ul>div{
+	margin-bottom: 10px; 
+}
+
+.dayOfWeek{
+	display: inline-block;
+	width: 92px;
 }
 
 
@@ -49,31 +58,31 @@ body, h1, h2, h3{
 
 #events li{
 	color: black;
-	height: 90px;
+	height: 80px;
 	overflow: hidden;
 	margin-bottom: 5px;
 	padding-left: 40px;
 }
 
 #events li p{
-	font-size: 30px;
+	font-size: 20px;
 }
 
 #events h2{
 	color: black;
 	height: 40px;
-	font-size: 40px;
+	font-size: 30px;
 	margin: 10px 0 0 0;
 	padding: 0;
 }
 
 #temp{
-	font-size: 130px;
+	font-size: 90px;
 	text-align: left;
 }
 
 #temp .icon{
-	font-size: 140px;
+	font-size: 90px;
 	margin-right: -80px;
 	color: #474747;
 }
@@ -84,7 +93,7 @@ body, h1, h2, h3{
 }
 
 #chill{
-	font-size: 60px;
+	font-size: 40px;
 }
 
 #temperatures{
@@ -101,17 +110,17 @@ body, h1, h2, h3{
 	clear: both;
 	width: 100%;
 	text-align: center;
-	font-size: 50px;
+	font-size: 30px;
 }
 
 #forecast{
-	font-size: 50px;
+	font-size: 30px;
 	text-align: center;
 	margin-top: 10px;
 }
 
 .temps{
-	font-size: 30px;
+	font-size: 20px;
 	height: 20px;
 	float: right;
 }
@@ -124,16 +133,16 @@ body, h1, h2, h3{
 
 #hourly{
 	margin-top: 20px;
-	font-size: 20px;
+	font-size: 15px;
 }
 
 #hourly .span1{
-	margin-left: 45px;
-	width: 100px;
+	margin-left: 12px;
+	width: 90px;
 	text-align: center;
-	font-size: 30px;
+	font-size: 25px;
 }
 
 #hourly .temp{
-	font-size: 70px;
+	font-size: 50px;
 }
