@@ -16,6 +16,7 @@ define(['jquery', 'underscore', 'backbone', 'common', 'text!templates/sensor/cli
 
       common.fetchState( self.model.entityId, function(result){
 
+      
         var set = result.attributes.temperature;
 
         if ( set == null ){
@@ -25,7 +26,8 @@ define(['jquery', 'underscore', 'backbone', 'common', 'text!templates/sensor/cli
         $(self.el).html(self.template({
             name : result.attributes.friendly_name,
             setTemperature : set,
-            currentTemperature : result.attributes.current_temperature
+            currentTemperature : result.attributes.current_temperature,
+            mode: result.attributes.operation_mode
         }));
 
         self.fetchTimeout = setTimeout( function(){ self.displayClimate(); }, 60000 );
